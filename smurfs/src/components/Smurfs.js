@@ -1,22 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getSmurfs } from '../actions';
 
 
 class Smurfs extends React.Component {
 
     componentDidMount() {
-
+        this.props.getSmurfs();
     }
 
     render() {
         return (
             
             <div className='smurfs'>
-            <h1> I am smurfs </h1>
+            {this.props.smurfs.map(smurf => {
+                return (
+                    <div className='smurf-info'>
+                    <h3>{smurf.name}</h3>
+                    <p>
+                        <strong>Age:</strong> {smurf.age}
+                    </p>
+                    <p>
+                        <strong>Height:</strong> {smurf.height}
+                    </p>
+                    </div>
+
+                );
+            })}
             </div>
             
         )
     }
 }
 
-export default connect(null, {})(Smurfs)
+const mapStateToProps = state => ({
+    smurfs: state.smurfs,
+    fetchingData: state.fetchingData
+})
+
+export default connect(mapStateToProps, { getSmurfs })(Smurfs)
