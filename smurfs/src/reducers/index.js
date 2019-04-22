@@ -2,7 +2,9 @@ import {
  FETCH_DATA_START,
  FETCH_DATA_SUCCESS,
  ADD_SMURF_START,
- ADD_SMURF_SUCCESS
+ ADD_SMURF_SUCCESS,
+ DELETE_SMURF_START,
+ DELETE_SMURF_SUCCESS
 } from '../actions';
 
 
@@ -32,6 +34,19 @@ export const reducer = (state = initialState, action) => {
       fetchingSmurfs: false,
       smurfs: action.payload
     };
+
+    case DELETE_SMURF_START: 
+    return {
+      ...state,
+      deletingSmurf: true
+    }
+    
+    case DELETE_SMURF_SUCCESS:
+    return {
+      ...state,
+      deletingSmurf: false,
+      smurfs: action.payload
+    }
 
     case ADD_SMURF_START:
     return {
