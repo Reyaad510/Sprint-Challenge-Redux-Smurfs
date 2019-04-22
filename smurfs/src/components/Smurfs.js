@@ -16,6 +16,7 @@ class Smurfs extends React.Component {
             {this.props.smurfs.map(smurf => {
                 return (
                     <div className='smurf-info'>
+                    <i class="fas fa-times"></i>
                     <h3>{smurf.name}</h3>
                     <p>
                         <strong>Age:</strong> {smurf.age}

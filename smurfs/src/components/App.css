@@ -1,9 +1,13 @@
 .App {
   text-align: center;
+ 
 }
 
 
+
+
 .smurf-info {
+  position: relative;
   background: #fff;
   border-radius: 2px;
   display: flex;
@@ -15,6 +19,14 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   text-align: center;
   padding-left: 24px;
+}
+
+.fa-times {
+  position: absolute;
+  cursor: pointer;
+  right: 5%;
+  
+
 }
 
 .smurfs {
@@ -77,3 +89,5 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+
