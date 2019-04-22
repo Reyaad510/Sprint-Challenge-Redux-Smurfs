@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs, deleteFriends } from '../actions';
+import EditForm from './EditForm';
 
 
 class Smurfs extends React.Component {
+
+    state =  {
+        editingSmurfId: null
+    }
 
 
     componentDidMount() {
@@ -18,10 +23,14 @@ class Smurfs extends React.Component {
         return (
             
             <div className='smurfs'>
-            {this.props.smurfs.map(smurf => {
+            {this.props.smurfs.map(smurf => { 
+                if(this.state.editingSmurfId === smurf.id) {
+                    return <EditForm smurf={smurf} />
+                    
+                } 
                 return (
                     <div className='smurf-info'>
-                    <i class="fas fa-pencil-alt"/>
+                    <i class="fas fa-pencil-alt" onClick={() => this.setState({ editingSmurfId: smurf.id })}/>
                     <i class="fas fa-times" onClick={() => this.deleteFriend(smurf.id)}/>
                     <h3>{smurf.name}</h3>
                     <p>
