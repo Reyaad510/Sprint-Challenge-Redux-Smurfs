@@ -21,7 +21,8 @@ class Smurfs extends React.Component {
             {this.props.smurfs.map(smurf => {
                 return (
                     <div className='smurf-info'>
-                    <i class="fas fa-times" onClick={() => this.deleteFriend(smurf.id)}></i>
+                    <i class="fas fa-pencil-alt"/>
+                    <i class="fas fa-times" onClick={() => this.deleteFriend(smurf.id)}/>
                     <h3>{smurf.name}</h3>
                     <p>
                         <strong>Age:</strong> {smurf.age}

@@ -24,8 +24,14 @@
 .fa-times {
   position: absolute;
   cursor: pointer;
-  right: 5%;
+  right: 15px;
   color: #FA7981;
+}
+
+.fa-pencil-alt {
+  position: absolute;
+  right: 40px;
+  cursor: pointer;
 }
 
 .smurfs {
