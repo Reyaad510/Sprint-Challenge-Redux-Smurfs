@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
 
 
 class EditForm extends React.Component {
@@ -20,13 +18,12 @@ class EditForm extends React.Component {
     }
 
     editSmurf = e => {
-        e.preventDefault();
-        this.props.editSmurfs(this.state.newSmurf);
+        this.props.editSmurf(e, this.state.newSmurf);
     }
 
     render() {
         return (
-            <form className='edit-form' onSubmit={this.handleFriendForm}>
+            <form className='edit-form' onSubmit={this.editSmurf}>
             <input
             type='text'
             name='name'
@@ -54,12 +51,6 @@ class EditForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        updatingSmurf: state.updatingSmurf
-    }
-}
 
-export default connect(
-    mapStateToProps, {}
-)(EditForm)
+
+export default EditForm;

@@ -55,6 +55,25 @@ export const addSmurf = newSmurf => dispatch => {
     .catch(err => console.log(err));
 }
 
+
+
+
+export const EDIT_SMURF_START = 'EDIT_SMURF_START';
+export const EDIT_SMURF_SUCCESS = 'EDIT_SMURF_SUCCESS';
+export const EDIT_SMURF_FAILURE = 'EDIT_SMURF_FAILURE';
+
+export const editSmurfs = smurf => dispatch => {
+  dispatch({ type: EDIT_SMURF_START });
+
+  return axios
+    .put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+    .then(res => dispatch({ type: EDIT_SMURF_SUCCESS, payload: res.data }))
+    .catch(err => {
+      console.log('call failed: ', err.response);
+      dispatch({ type: EDIT_SMURF_FAILURE, payload: err.response });
+    })
+}
+
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.

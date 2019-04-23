@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs, deleteFriends } from '../actions';
+import { getSmurfs, deleteFriends, editSmurfs } from '../actions';
 import EditForm from './EditForm';
 
 
@@ -19,14 +19,21 @@ class Smurfs extends React.Component {
         this.props.deleteFriends(id);
     }
 
+    editSmurf = (e, smurf) => {
+        e.preventDefault();
+        this.props.editSmurfs(smurf)
+        .then(() => {
+            this.setState({ editingSmurfId: null })
+        })
+    }
+
     render() {
         return (
             
             <div className='smurfs'>
             {this.props.smurfs.map(smurf => { 
                 if(this.state.editingSmurfId === smurf.id) {
-                    return <EditForm smurf={smurf} />
-                    
+                    return <EditForm smurf={smurf} editSmurf={this.editSmurf} updatingSmurf={this.props.updatingSmurf}/>   
                 } 
                 return (
                     <div className='smurf-info'>
@@ -52,7 +59,8 @@ class Smurfs extends React.Component {
 const mapStateToProps = state => ({
     smurfs: state.smurfs,
     fetchingData: state.fetchingData,
-    deletingSmurf: state.deletingSmurf
+    deletingSmurf: state.deletingSmurf,
+    updatingSmurf: state.updatingSmurf
 })
 
-export default connect(mapStateToProps, { getSmurfs, deleteFriends })(Smurfs)
+export default connect(mapStateToProps, { getSmurfs, deleteFriends, editSmurfs })(Smurfs)
